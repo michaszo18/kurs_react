@@ -32,10 +32,7 @@
             const postsList = posts.map(post => (
                 <Post
                     key={post.title}
-                    title={post.title}
-                    short_content={post.short_content}
-                    content={post.content}
-                    show_content={post.show_content}
+                    {...post}
                 />
             ));
 
