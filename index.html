@@ -15,16 +15,24 @@
 
     <div id="root"></div>
     <script>
-        const myComponent =
-            <div>
-                <h1>Hello, world!</h1>
-                <p>Mordo</p>
-            </div>;
+        
+        const Greetings = () => {
+            return (
+                <div>
+                    <Title />
+                    <p>Mordo</p>
+                </div>
+            );
+        }
+
+        const Title = () => <h1>Hello, world!</h1>
+
 
         ReactDOM.render(
-            myComponent,
+            <Greetings />,
             document.getElementById('root')
         );
+
     </script>
 
 </body>
