@@ -6,10 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hello React</title>
-
     <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js" integrity="sha512-kp7YHLxuJDJcOzStgd6vtpxr4ZU9kjn77e6dBsivSz+pUuAuMlE2UTdKB7jjsWT84qbS8kdCWHPETnP/ctrFsA==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"
+        integrity="sha512-kp7YHLxuJDJcOzStgd6vtpxr4ZU9kjn77e6dBsivSz+pUuAuMlE2UTdKB7jjsWT84qbS8kdCWHPETnP/ctrFsA=="
+        crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -19,14 +20,29 @@
     <script crossorigin type="text/babel">
 
         const Blog = () => {
-            
+            const posts = [
+                {
+                    title: "Wojak Zyczajny",
+                    short_content: "Najlepiej smakuje pity po janowsku, czyli na...",
+                    content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse eaque ipsum amet eum eius ea totam deleniti maiores fugit cum quasi quae, error nihil est accusantium ipsa voluptate, voluptatem enim.",
+                    show_content: true
+                }
+            ];
+
+            const postsList = posts.map(post => (
+                <Post
+                    key={post.title}
+                    title={post.title}
+                    short_content={post.short_content}
+                    content={post.content}
+                    show_content={post.show_content}
+                />
+            ));
+
             return (
                 <div>
                     <h1>To jest blog o Wojaku</h1>
-                    <Post 
-                        title="Wojak Zyczajny" 
-                        short_content="Najlepiej smakuje pity po janowsku, czyli na..."
-                    />
+                    {postsList}
                 </div>
             );
         }
@@ -35,10 +51,20 @@
             return (
                 <div>
                     <h2>{props.title}</h2>
-                    <p>{props.short_content}</p>    
-                    <button>Czytaj więcej</button>
+                    <p>{props.short_content}</p>
+                    <IsShowContent 
+                        show={props.show_content}
+                    />
                 </div>
             );
+        }
+
+        const IsShowContent = (props) => {
+            if(props.show) {
+                return <button>Czytaj więcej</button>
+            } else {
+                return null;
+            }
         }
 
         ReactDOM.render(
