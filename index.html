@@ -9,32 +9,44 @@
 
     <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js" integrity="sha512-kp7YHLxuJDJcOzStgd6vtpxr4ZU9kjn77e6dBsivSz+pUuAuMlE2UTdKB7jjsWT84qbS8kdCWHPETnP/ctrFsA==" crossorigin="anonymous"></script>
 </head>
 
 <body>
 
     <div id="root"></div>
-    <script>
-        
-        const Greetings = () => {
+
+    <script crossorigin type="text/babel">
+
+        const Blog = () => {
+            
             return (
                 <div>
-                    <Title />
-                    <p>Mordo</p>
+                    <h1>To jest blog o Wojaku</h1>
+                    <Post 
+                        title="Wojak Zyczajny" 
+                        short_content="Najlepiej smakuje pity po janowsku, czyli na..."
+                    />
                 </div>
             );
         }
 
-        const Title = () => <h1>Hello, world!</h1>
-
+        const Post = (props) => {
+            return (
+                <div>
+                    <h2>{props.title}</h2>
+                    <p>{props.short_content}</p>    
+                    <button>Czytaj więcej</button>
+                </div>
+            );
+        }
 
         ReactDOM.render(
-            <Greetings />,
+            <Blog />,
             document.getElementById('root')
         );
 
     </script>
-
 </body>
 
 </html>
