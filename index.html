@@ -19,9 +19,13 @@
 
     <script crossorigin type="text/babel">
 
-        class Title extends React.Componet {
+        class Title extends React.Component {
+            constructor(props) {
+                super(props);
+            }
+
             render() {
-                return <h1>A</h1>;
+                return <h1>{this.props.value}</h1>
             }
         }
 
@@ -43,7 +47,7 @@
 
             return (
                 <div>
-                    <Title text="To jest blog o Wojaku"/>
+                    <Title value="Blog o piwach Janowskich"/>
                     {postsList}
                 </div>
             );
