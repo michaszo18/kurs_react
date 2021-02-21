@@ -51,18 +51,25 @@
                     <p>{props.short_content}</p>
                     <IsShowContent 
                         show={props.show_content}
+                        content = {props.content}
                     />
                 </div>
             );
         }
 
         const IsShowContent = (props) => {
+            const showMoreContent = (e) => {
+                console.log("🚀 ~ file: index.html ~ line 64 ~ showMoreContent ~ e", e)
+            }
+            
+
             if(props.show) {
-                return <button>Czytaj więcej</button>
+                return <button onClick={showMoreContent}>Czytaj więcej</button>
             } else {
                 return null;
             }
         }
+        
 
         ReactDOM.render(
             <Blog />,
