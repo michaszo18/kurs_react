@@ -47,43 +47,54 @@
 
             return (
                 <div>
-                    <Title value="Blog o piwach Janowskich"/>
+                    <Title value="Blog o piwach Janowskich" />
                     {postsList}
                 </div>
             );
         }
 
         const Post = (props) => {
-            
+
             return (
                 <div>
                     <h2>{props.title}</h2>
                     <p>{props.short_content}</p>
-                    <IsShowContent 
-                        content = {props.content}
+                    <ShowContent
+                        content={props.content}
                     />
                 </div>
             );
         }
 
-        const IsShowContent = (props) => {
-            const [show_content, setShowContent] = React.useState(true);
-            const showMoreContent = (e) => {
-                setShowContent(!show_content);
+        class ShowContent extends React.Component {
+
+            constructor(props) {
+                super(props);
+                this.state = {
+                    show_content: true
+                }
+            }
+    
+            showMoreContent = () => {
+                this.setState({
+                    show_content: !this.state.show_content
+                });
             }
 
-            if(show_content == false) {
-                return <button onClick={showMoreContent}>Czytaj więcej</button>
-            } else {
-                return (
-                    <div>
-                        <p>{props.content}</p>
-                        <button onClick={showMoreContent}>Czytaj mniej</button>
-                    </div>
-                );
+            render() {
+                if (this.state.show_content == false) {
+                    return <button onClick={() => this.showMoreContent()}>Czytaj więcej</button>
+                } else {
+                    return (
+                        <div>
+                            <p>{this.props.content}</p>
+                            <button onClick={() => this.showMoreContent()}>Czytaj mniej</button>
+                        </div>
+                    );
+                }
             }
         }
-        
+
         ReactDOM.render(
             <Blog />,
             document.getElementById('root')
