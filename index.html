@@ -19,6 +19,12 @@
 
     <script crossorigin type="text/babel">
 
+        class Title extends React.Componet {
+            render() {
+                return <h1>A</h1>;
+            }
+        }
+
         const Blog = () => {
             const posts = [
                 {
@@ -37,7 +43,7 @@
 
             return (
                 <div>
-                    <h1>To jest blog o Wojaku</h1>
+                    <Title text="To jest blog o Wojaku"/>
                     {postsList}
                 </div>
             );
