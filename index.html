@@ -23,9 +23,8 @@
             const posts = [
                 {
                     title: "Wojak Zyczajny",
-                    short_content: "Najlepiej smakuje pity po janowsku, czyli na...",
+                    short_content: "Najlepiej smakuje pity po janowsku, czyli na rynku przy studni",
                     content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse eaque ipsum amet eum eius ea totam deleniti maiores fugit cum quasi quae, error nihil est accusantium ipsa voluptate, voluptatem enim.",
-                    show_content: true
                 }
             ];
 
@@ -45,12 +44,12 @@
         }
 
         const Post = (props) => {
+            
             return (
                 <div>
                     <h2>{props.title}</h2>
                     <p>{props.short_content}</p>
                     <IsShowContent 
-                        show={props.show_content}
                         content = {props.content}
                     />
                 </div>
@@ -58,19 +57,23 @@
         }
 
         const IsShowContent = (props) => {
+            const [show_content, setShowContent] = React.useState(true);
             const showMoreContent = (e) => {
-                console.log("🚀 ~ file: index.html ~ line 64 ~ showMoreContent ~ e", e)
+                setShowContent(!show_content);
             }
-            
 
-            if(props.show) {
+            if(show_content == false) {
                 return <button onClick={showMoreContent}>Czytaj więcej</button>
             } else {
-                return null;
+                return (
+                    <div>
+                        <p>{props.content}</p>
+                        <button onClick={showMoreContent}>Czytaj mniej</button>
+                    </div>
+                );
             }
         }
         
-
         ReactDOM.render(
             <Blog />,
             document.getElementById('root')
