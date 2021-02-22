@@ -1,7 +1,15 @@
 .header {
-    background-color: rgb(9, 9, 94);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background: rgb(63,94,251);
+    background: linear-gradient(164deg, rgba(63,94,251,1) 0%, rgb(229, 70, 252) 100%);
+    color: white;
+}
+
+.title {
+    font-weight: bold;
+    color: white;
+}
+
+.title:hover {
+    color: rgb(255, 255, 255);
 }
 
