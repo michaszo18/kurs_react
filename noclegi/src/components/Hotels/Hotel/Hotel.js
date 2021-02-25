@@ -5,7 +5,8 @@ export default () => {
     return (
         <div className="row my-4">
             <div className="col-md-10 offset-md-1 col-lg-6 offset-lg-3 shadow p-3 mb-5 bg-body rounded">
-                <h3>Hotel name</h3>
+                <span className="badge bg-success">8.6/10</span>
+                <h3 className="mt-2">Hotel name</h3>
                 <img src={hotelImg} className="img-fluid rounded"/>
                 <div className="row mt-3">
                     <p className="col-6"><b>City</b></p>
