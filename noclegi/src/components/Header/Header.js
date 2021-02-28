@@ -4,7 +4,7 @@ import TopMenu from './TopMenu/TopMenu'
 import styles from './Header.module.css'
 
 
-export default () => {
+export default (props) => {
     return (
         <header className={[styles.header, 'container-fluid'].join(' ')}>
             <div className={`row`}>
@@ -15,7 +15,7 @@ export default () => {
                 </div>
             </div>
             <TopMenu/>
-            <SearchBar />
+            <SearchBar onSearch={props.onSearch} />
         </header>
     );
 }

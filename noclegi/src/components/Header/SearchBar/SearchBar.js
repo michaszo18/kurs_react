@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import styles from './SearchBar.module.css'
 import { BsSearch } from 'react-icons/bs';
 
-export default () => {
+export default (props) => {
     const [term, setTerm] = useState('');
 
     const search = () => {
-        console.log(term);
+        props.onSearch(term);
     }
 
     return (

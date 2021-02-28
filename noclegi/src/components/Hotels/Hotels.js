@@ -5,9 +5,7 @@ export default class Hotels extends React.Component {
     render() {
         return (
             <div className="container">
-                <Hotel/>
-                <Hotel/>
-                <Hotel/>
+                {this.props.hotels.map(hotel => <Hotel key={hotel.id} {...hotel} />)}
             </div>
         )
     }
