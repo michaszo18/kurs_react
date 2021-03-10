@@ -3,6 +3,7 @@ import './App.css';
 import Header from './components/Header/Header.js'
 import Menu from './components/Menu/Menu.js'
 import Hotels from './components/Hotels/Hotels.js'
+import Spinner from './components/UI/Spinner.js'
 
 class App extends React.Component {
 
@@ -28,7 +29,17 @@ class App extends React.Component {
   ];
 
   state = {
-    hotels: [this.hotels]
+    hotels: [],
+    loading: true,
+  }
+
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({
+        hotels: this.hotels,
+        loading: false
+      });
+    }, 1000);
   }
 
   searchHandler(term) {
@@ -44,8 +55,13 @@ class App extends React.Component {
     return (
       <div className="App">
         <Header onSearch={(term) => this.searchHandler(term)} />
-        <Menu />
-        <Hotels hotels={this.state.hotels} />
+        {/* <Menu /> */}
+        {this.state.loading ? (
+          <Spinner />
+        ) : (
+            <Hotels hotels={this.state.hotels} />
+          )}
+
       </div>
     );
   }
