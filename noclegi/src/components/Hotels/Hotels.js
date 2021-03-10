@@ -1,12 +1,18 @@
-import React from 'react';
+import PropTypes from 'prop-types';
 import Hotel from './Hotel/Hotel'
 
-export default class Hotels extends React.Component {
-    render() {
-        return (
-            <div className="container">
-                {this.props.hotels.map(hotel => <Hotel key={hotel.id} {...hotel} />)}
-            </div>
-        )
-    }
+const propTypes = {
+    hotels: PropTypes.array.isRequired
 }
+
+const Hotels = (props) => {
+    return (
+        <div className="container">
+            {props.hotels.map(hotel => <Hotel key={hotel.id} {...hotel} />)}
+        </div>
+    )
+}
+
+Hotels.propTypes = propTypes;
+
+export default Hotels;
