@@ -1,10 +1,9 @@
 import React from 'react';
-import SearchBar from './SearchBar/SearchBar'
 import TopMenu from './TopMenu/TopMenu'
 import styles from './Header.module.css'
 
 
-export default (props) => {
+const Header = (props) => {
     return (
         <header className={[styles.header, 'container-fluid'].join(' ')}>
             <div className={`row`}>
@@ -14,9 +13,10 @@ export default (props) => {
                     </h1>
                 </div>
             </div>
-            <TopMenu/>
-            <SearchBar onSearch={props.onSearch} />
+            <TopMenu />
+            {props.children}
         </header>
     );
 }
 
+export default Header;

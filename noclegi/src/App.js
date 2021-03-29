@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Header from './components/Header/Header.js'
-import Menu from './components/Menu/Menu.js'
+import SearchBar from './components/UI/SearchBar/SearchBar.js'
 import Hotels from './components/Hotels/Hotels.js'
 import Spinner from './components/UI/Spinner.js'
 
@@ -54,8 +54,9 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Header onSearch={(term) => this.searchHandler(term)} />
-        {/* <Menu /> */}
+        <Header>
+          <SearchBar onSearch={term => this.searchHandler(term)}/>
+        </Header>
         {this.state.loading ? (
           <Spinner />
         ) : (
